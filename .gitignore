@@ -1,0 +1,20 @@
+# Never distribute ROMs or extracted commercial game data
+*.zip
+*.7z
+*.chd
+*.rom
+roms/
+ROMs/
+assets/extracted/
+build/
+dist/
+out/
+*.exe
+*.AppImage
+*.dll
+*.so
+*.log
+__pycache__/
+.pytest_cache/
+.vs/
+.vscode/
