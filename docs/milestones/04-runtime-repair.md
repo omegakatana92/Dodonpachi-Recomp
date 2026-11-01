@@ -26,8 +26,8 @@ stats frame=5700 avg=17.33ms (57.70fps) p99=17.38ms max=17.42ms queue=1684
 stats frame=6000 avg=17.33ms (57.70fps) p99=17.37ms max=20.19ms queue=3728
 ```
 
-The first 300-frame report in a run includes the zero-initialised statistics ring; ignore its
-apparent 114 fps average. The settled rate is 57.7 fps.
+The statistics window now averages only filled samples, so the first 300-frame report is
+already meaningful: 17.41 ms (57.43 fps), p99 17.38 ms, with a single startup spike.
 
 ## Graphics corruption
 

@@ -188,14 +188,16 @@ static void report_frame_stats(uint64_t frame_start, uint64_t frame_end)
 	double sorted[600];
 	double sum = 0.0;
 	double max = 0.0;
+	int count;
 	int i;
 
 	frame_times[frame_time_count++ % 600] = milliseconds;
 	if (!stats || frame_time_count % 300 != 0)
 		return;
-	memcpy(sorted, frame_times, sizeof(sorted));
-	qsort(sorted, 600, sizeof(double), compare_double);
-	for (i = 0; i < 600; ++i)
+	count = frame_time_count < 600 ? frame_time_count : 600;
+	memcpy(sorted, frame_times, (size_t)count * sizeof(double));
+	qsort(sorted, (size_t)count, sizeof(double), compare_double);
+	for (i = 0; i < count; ++i)
 	{
 		sum += sorted[i];
 		if (sorted[i] > max)
@@ -203,8 +205,8 @@ static void report_frame_stats(uint64_t frame_start, uint64_t frame_end)
 	}
 	fprintf(stderr,
 	        "ddonpach: stats frame=%d avg=%.2fms (%.2ffps) p99=%.2fms max=%.2fms queue=%u\n",
-	        frame_time_count, sum / 600.0, 600000.0 / sum,
-	        sorted[594], max,
+	        frame_time_count, sum / count, 1000.0 * count / sum,
+	        sorted[(count * 99) / 100], max,
 	        audio_device ? (unsigned)SDL_GetQueuedAudioSize(audio_device) : 0u);
 }
 

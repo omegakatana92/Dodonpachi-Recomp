@@ -90,9 +90,9 @@ and must not be uploaded or redistributed.
 The AppImage was built on Ubuntu 22.04 (glibc 2.35) for SteamOS compatibility. SHA-256 of the
 verified local artifacts:
 
-- Windows exe: `0a9787e3c50b04449d1284b657eb44cda35c6915209f04fb092be65c9f0a16a1`
+- Windows exe: `586b259d7e48a40a0ecd00194e8f95318d12a8178a1ec547359b0f738cb58191`
 - Windows SDL2.dll: `ab4af8e2e92d0582fa940127a3c3975e3e249f19af91c74e81eb65fb4c4529c6`
-- AppImage: `db8c0d0382be433366c6802fce77eadc09b707dffbcff137729e002d7273339`
+- AppImage: `ae03a852c18923d9e8253e9c55e7a5bf3bb8323ae7bc0f7812be1d45fb211b21`
 
 The AppImage was launched under WSL with SDL's dummy video driver; Steam Deck hardware and
 its real display/audio/input stack remain untested.
