@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=DoDonPachi
+Comment=Native port of DoDonPachi (1997)
+Exec=DoDonPachi
+Icon=dodonpachi
+Terminal=false
+Categories=Game;ArcadeGame;

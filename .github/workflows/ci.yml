@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  windows-runtime:
+    name: Windows runtime (ROM-free fixture)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Configure
+        run: cmake -S . -B build/ci -G "Visual Studio 17 2022" -A x64 -DDDP_FIXTURE=ON -DDDP_BUILD_SDL2=OFF
+      - name: Build
+        run: cmake --build build/ci --config Release --parallel
+      - name: Run fixture
+        run: build/ci/bin/ddonpach_fixture.exe
+      - name: CTest
+        run: ctest --test-dir build/ci -C Release --output-on-failure
+
+  linux-runtime:
+    name: Linux runtime (ROM-free fixture)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependencies
+        run: sudo apt-get update && sudo apt-get install -y cmake ninja-build build-essential libsdl2-dev
+      - name: Configure
+        run: cmake -S . -B build/ci -G Ninja -DCMAKE_BUILD_TYPE=Release -DDDP_FIXTURE=ON
+      - name: Build
+        run: cmake --build build/ci --parallel
+      - name: Run fixture
+        run: ./build/ci/bin/ddonpach_fixture
+      - name: CTest
+        run: ctest --test-dir build/ci --output-on-failure
+      - name: Packaging smoke test
+        run: |
+          curl -L -o appimagetool \
+            https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
+          chmod +x appimagetool
+          DDP_BINARY=build/ci/bin/ddonpach_fixture \
+          APPIMAGETOOL="$PWD/appimagetool" \
+            scripts/package_appimage.sh build/ci/DoDonPachi-fixture-x86_64.AppImage
+          test -s build/ci/DoDonPachi-fixture-x86_64.AppImage
+
+  tools:
+    name: Python tooling
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Byte-compile the tools
+        run: python -m compileall -q tools
+      - name: Shell syntax
+        run: bash -n scripts/build-local.sh scripts/package_appimage.sh

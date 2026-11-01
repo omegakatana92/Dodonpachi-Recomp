@@ -1,0 +1,54 @@
+# ROMs, extracted assets, and translated ROM-derived code: never commit
+/rom/*
+!/rom/.gitkeep
+/assets/
+/assets-extracted/
+/build/
+/generated/
+*.zip
+
+# Tool output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Development captures (MAME reference, headless snapshots)
+/snap/
+*.avi
+*.wav
+*.log
+
+# Build output
+*.exe
+*.dll
+*.lib
+*.a
+*.o
+*.obj
+*.pdb
+*.ilk
+*.AppImage
+*.so
+*.dylib
+*.dSYM/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+.ninja_deps
+.ninja_log
+compile_commands.json
+
+# Editor / OS
+.vscode/
+.idea/
+*.user
+.DS_Store
+Thumbs.db
+
+# MAME development artifacts
+/cfg/
+/nvram/
+/sta/
+
