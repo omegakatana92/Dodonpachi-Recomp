@@ -1,5 +1,8 @@
 # Third-party notices
 
+The project as a whole is distributed under GPL-2.0; see `../LICENSE`. Individual files keep
+their BSD-3-Clause notices where marked (BSD-3-Clause is GPL-compatible).
+
 - `arcade-decomp.txt`: the shared static-translation toolchain under `tools/core/`
   (BSD-3-Clause, copyright Sebastian Toyos). It runs at build time and is not linked into
   the shipped game.

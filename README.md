@@ -138,8 +138,10 @@ current blockers.
 
 ## Legal
 
-The port's own source is BSD 3-Clause (see `LICENSE`). `tools/core` is BSD-3-Clause,
-copyright Sebastian Toyos. `runtime/third_party/miniz` is public domain/Unlicense. MAME and
-ymfm are used only as development references under their BSD-3-Clause terms; their code is
-not linked into `ddonpach` or the SDL2 port. DoDonPachi is a trademark of its respective
-owners; this project is not affiliated with Cave or Atlus.
+The repository is distributed under **GPL-2.0** (see `LICENSE`), preserving the upstream
+repository's license. Individual port files retain their BSD-3-Clause notices where marked;
+BSD-3-Clause is GPL-compatible. `tools/core` is BSD-3-Clause, copyright Sebastian Toyos.
+`runtime/third_party/miniz` is public domain/Unlicense. MAME and ymfm are used only as
+development references under their BSD-3-Clause terms; their code is not linked into
+`ddonpach` or the SDL2 port. DoDonPachi is a trademark of its respective owners; this project
+is not affiliated with Cave or Atlus.

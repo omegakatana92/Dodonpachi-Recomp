@@ -167,12 +167,25 @@ Milestones 1-5 establish the playable port. Milestone 6 is the long-term decompi
 
 ## Licensing
 
-- `tools/core` is BSD-3-Clause, copyright Sebastian Toyos; see `tools/core/LICENSE`.
-- MAME and ymfm are BSD-3-Clause. They may be used for development reference tools, never
-  in the released game.
-- The port's own code is provided under the repository's chosen license; third-party notices
-  must be preserved in `LICENSES/` and in release archives.
-- Do not include the ROM or generated translated C in source or binary releases.
+- The repository is distributed under GPL-2.0 (`LICENSE`), preserving the license already
+  present in the upstream repository. Do not replace it with PolyForm or another license.
+- Individual port files retain BSD-3-Clause notices where marked; BSD-3-Clause is
+  GPL-compatible. `tools/core` is BSD-3-Clause, copyright Sebastian Toyos; see
+  `tools/core/LICENSE`. MAME and ymfm are BSD-3-Clause and are development references only,
+  never linked into the released game.
+- Third-party notices must be preserved in `LICENSES/` and in release archives.
+- Do not include the ROM, extracted assets, generated translated C, or game-art screenshots
+  in source or binary releases.
+
+## Git workflow
+
+- Use the existing `main` branch of `https://github.com/omegakatana92/Dodonpachi-Recomp`.
+  Do not create a duplicate repository, force-push, or rewrite published history.
+- Review `git status`, exclude ROMs, logs, captures, generated C and build outputs, commit
+  tested milestones with descriptive messages, and push with the user's configured GitHub
+  credentials.
+- Report work with changed files, exact commands, observed results, blockers and the next
+  milestone. Do not claim a build or test that was not actually run.
 
 ## Known environment note
 
